@@ -9,11 +9,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../normalize.css">
     <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="./login.css">
 </head>
 <body>
+    
     <main class="site__main">
-      .conteyner.logout__wraper>
+      <section class="login">
+        <div class="conteyner login__wraper">
+            <div class="login__content">
+                <img src="" alt="" class="login_img">
+                <h2 class="login_title">Login for user</h2>
+            </div>
+            <form class="login__form">
+                <div class="login__content">
+                    <label for="login-email" class="login_label">your email:</label>
+                    <input id="login-email" type="text" class="login_input" placeholder="change your email">
+                </div>
+                <div class="login__content">
+                    <label for="login-password" class="login_label">your password</label>
+                    <input id='login-password' type="text" class="login_input" placeholder="change your password">
+                </div>
+                <button class="login_btn">sign in</button>
+                <small class="login_small">If you don't have accaunt will you need registor</small>
+            </form>
+        </div>
+      </section>
     </main>
+
     <script type="module" src="../firebase.js"></script>
+    <script src="./login.js"></script>
 </body>
 </html>
