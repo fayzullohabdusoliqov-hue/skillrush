@@ -14,6 +14,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-// npm install -g firebase-tools
-// npm install firebase
-// firebase login, firebase init, firebase deploy
+console.log("Firebase ishladi");
