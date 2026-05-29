@@ -32,7 +32,8 @@ async function userLogin(email, password){
         }, 
         body: JSON.stringify({
             email: email,
-            password: password
+            password: password,
+            returnSecureToken: true
         })
     })
     const data = await res.json()
@@ -50,20 +51,21 @@ async function userRegistor(email, password){
     const res = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBOZxD61FFMXBscDzQihhxexMvD-cHhabw",{
         method: "POST",
         headers: {
-          "Content-type": "application/json"
+          "Content-Type": "application/json"
         }, 
         body: JSON.stringify({
             email: email,
-            password: password
+            password: password,
+            returnSecureToken: true
         })
     })
     const data = await res.json()
 
     if(!res.ok){
-        throw new Error(data.error.message)
+        throw new Error("We have this accaunt: " + data.error.message)
     }
   }catch(err){
-    console.log(err.message)
+    alert("We have this accaunt: " + err.message)
   }
 }
 
