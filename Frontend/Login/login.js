@@ -1,7 +1,9 @@
+const elLogin = document.querySelector(".login")
 const elSubmitBtn = document.querySelector(".login_btn")
 const elSmallLogin = document.querySelector(".login_small")
 const elEmailLogin = document.querySelector("#login-email")
 const elPasswordLogin = document.querySelector("#login-password")
+const loading = document.querySelector(".section-loading")
 
 elSubmitBtn.addEventListener("click", (evt) => {
   evt.preventDefault()
@@ -25,6 +27,8 @@ elSmallLogin.addEventListener("click", (evt) => {
 
 async function userLogin(email, password){
   try{
+    loading.style.display = "flex"
+    elLogin.style.display = "none"
     const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBOZxD61FFMXBscDzQihhxexMvD-cHhabw`,{
         method: "POST",
         headers: {
@@ -37,17 +41,21 @@ async function userLogin(email, password){
         })
     })
     const data = await res.json()
-    
-    if(!res.ok){
-        throw new Error("We don't have this accaunt: " + data.error.message)
-    }
+    localStorage.setItem("token", data?.idToken)
+    localStorage.setItem("localId", data?.localId)
+    window.location.href = "http://127.0.0.1:5500/Frontend/Home/home.html"
   }catch(err){
     alert(err.message)
+  }finally{
+    loading.style.display = "none"
+    elLogin.style.display = "flex"
   }
 }
 
 async function userRegistor(email, password){
   try{
+    loading.style.display = "flex"
+    elLogin.style.display = "none"
     const res = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyBOZxD61FFMXBscDzQihhxexMvD-cHhabw",{
         method: "POST",
         headers: {
@@ -60,13 +68,37 @@ async function userRegistor(email, password){
         })
     })
     const data = await res.json()
+    const resScore = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/score/${data?.localId}.json?auth=${data?.idToken}`,{
+        method: "PUT",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+            score: 50
+        })
+    })
+    const dataScore = await resScore.json()
+    const resProfile = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/profile/${data?.localId}.json?auth=${data?.idToken}`,{
+        method: "PUT",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body:JSON.stringify({
+            name: "user skill rush",
+            email: email,
+            skins: []
+        })
+    })
+    const dataProfile = await resProfile.json()
 
-    if(!res.ok){
-        throw new Error("We have this accaunt: " + data.error.message)
-    }
+    alert("you are creating new accaunt!")
+    localStorage.setItem("token", data?.idToken)
+    localStorage.setItem("localId", data?.localId)
+    window.location.href = "http://127.0.0.1:5500/Frontend/Home/home.html"
   }catch(err){
     alert("We have this accaunt: " + err.message)
+  }finally{
+    loading.style.display = "none"
+    elLogin.style.display = "flex"
   }
 }
-
-// https://test-1206d-default-rtdb.firebaseio.com/users/${data.localId}.json?auth=${data.idToken} shu url bilan olingan token va localId yordamida foydalanuvchi ma'lumotlari ajratib olinadi
