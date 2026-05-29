@@ -1,6 +1,11 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
-    background: var(--body-bg);
-    color: var(--body-color);
+    background: #1c1942;
+    color: white;
     font-family: "Ruda";
 }
 ul,ol{

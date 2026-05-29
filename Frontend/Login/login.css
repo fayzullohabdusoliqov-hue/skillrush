@@ -7,30 +7,24 @@
     justify-content: center;
 }
 .login__wraper{
-    background: #00004d;
+    background: #231942;
     width: 350px;
-    height: 480px;
+    height: 500px;
 
     display: grid;
     align-items: center;
     justify-content: center;
     border-radius: 25px;
-    box-shadow: rgb(14, 14, 191) 4px 4px 5px 0px;
-    border: 2px solid darkblue;
+    border: 2px solid #2a2a48;
     transition: ease-in 0.3s;
     cursor: pointer;
-    padding-bottom: 15px;
+}
+.login_logo{
+    margin-bottom: -30px;
+    margin-top: -20px;
 }
 .login__wraper:hover{
-    box-shadow: rgb(21, 21, 222) 4px 4px 7px 2px;
-}
-.login__wraper > .login__content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    font-size: 26px ;
-    font-weight: 800;
+    box-shadow: #38386b 2px 2px 3px 0px;
 }
 .login__form{
     display: flex;
@@ -49,22 +43,26 @@
 .login_input{
     background: transparent;
     width: 300px;
-    height: 40px;
+    height: 45px;
     padding: 0 10px;
     border-radius: 6px;
     outline: none;
-    border: white 1px solid;
+    border: #38386b 1px solid;
 
-    color: lightgrey;
+    color: #dfdffd;
     font-size: 12px;
     transition: ease-in 0.3s;
 }
 .login_input:focus{
-    box-shadow: rgb(21, 21, 222) 2px 2px 3px 0px;
+    box-shadow: #38386b 2px 2px 3px 0px;
     transform: scale(103%);
+}
+.login_input::placeholder{
+    color: #9595c4;
 }
 .login_label{
     font-weight: 600;
+    color: #dfdffd;
 }
 .login_btn{
     background: transparent;
@@ -73,28 +71,17 @@
     padding: 0 10px;
     border-radius: 6px;
     outline: none;
-    border: white 1px solid;
+    border: #38386b 1px solid;
 
-    color: lightgrey;
+    color: #dfdffd;
     font-size: 14px;
     transition: ease-in 0.3s;
 }
 .login_btn:hover{
-    box-shadow: rgb(21, 21, 222) 1px 1px 2px 0px;
+    box-shadow: #38386b 1px 1px 2px 0px;
     transform: scale(103%);
 }
-.login_logo{
-    animation: infinite 5s ease-in-out logo;
-}
-
-@keyframes logo{
-    0%{
-        transform: rotate(30deg);
-    }
-    50%{
-        transform: rotate(-30deg);
-    }
-    100%{
-        transform: rotate(30deg);
-    }
+.login_small{
+    color: #dfdffd;
+    font-size: x-small;
 }
