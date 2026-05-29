@@ -1,0 +1,100 @@
+.login{
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login__wraper{
+    background: #00004d;
+    width: 350px;
+    height: 480px;
+
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    border-radius: 25px;
+    box-shadow: rgb(14, 14, 191) 4px 4px 5px 0px;
+    border: 2px solid darkblue;
+    transition: ease-in 0.3s;
+    cursor: pointer;
+    padding-bottom: 15px;
+}
+.login__wraper:hover{
+    box-shadow: rgb(21, 21, 222) 4px 4px 7px 2px;
+}
+.login__wraper > .login__content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 26px ;
+    font-weight: 800;
+}
+.login__form{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+.login__form > .login__content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 3px;
+}
+.login_input{
+    background: transparent;
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 6px;
+    outline: none;
+    border: white 1px solid;
+
+    color: lightgrey;
+    font-size: 12px;
+    transition: ease-in 0.3s;
+}
+.login_input:focus{
+    box-shadow: rgb(21, 21, 222) 2px 2px 3px 0px;
+    transform: scale(103%);
+}
+.login_label{
+    font-weight: 600;
+}
+.login_btn{
+    background: transparent;
+    width: 300px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 6px;
+    outline: none;
+    border: white 1px solid;
+
+    color: lightgrey;
+    font-size: 14px;
+    transition: ease-in 0.3s;
+}
+.login_btn:hover{
+    box-shadow: rgb(21, 21, 222) 1px 1px 2px 0px;
+    transform: scale(103%);
+}
+.login_logo{
+    animation: infinite 5s ease-in-out logo;
+}
+
+@keyframes logo{
+    0%{
+        transform: rotate(30deg);
+    }
+    50%{
+        transform: rotate(-30deg);
+    }
+    100%{
+        transform: rotate(30deg);
+    }
+}
