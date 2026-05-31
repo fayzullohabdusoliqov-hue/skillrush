@@ -68,24 +68,17 @@ async function userRegistor(email, password){
         })
     })
     const data = await res.json()
-    const resScore = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/score/${data?.localId}.json?auth=${data?.idToken}`,{
-        method: "PUT",
-        headers:{
-            "Content-Type": "application/json"
-        },
-        body:JSON.stringify({
-            score: 50
-        })
-    })
-    const dataScore = await resScore.json()
     const resProfile = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/profile/${data?.localId}.json?auth=${data?.idToken}`,{
         method: "PUT",
         headers:{
             "Content-Type": "application/json"
         },
         body:JSON.stringify({
-            name: "user skill rush",
+            name: "User skill rush",
             email: email,
+            avatar: "../../photo/icon/userIcon.png",
+            score: 50,
+            ball: 0,
             skins: []
         })
     })
