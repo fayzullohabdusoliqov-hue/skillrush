@@ -6,7 +6,6 @@ const headerBall = document.querySelector(".ball")
 const localId = localStorage.getItem("localId")
 const token = localStorage.getItem("token")
 
-
 const profileForm = document.querySelector(".profile__form")
 const profileInput = document.querySelector("#name")
 const profileLabel = document.querySelector(".profile_label")

@@ -29,7 +29,7 @@ async function getProfile(){
         headerScore.textContent = `${data?.score}`
         headerBall.textContent = `${data?.ball}`
         userScore = data?.score
-        userSkins = [...data?.skins]
+        userSkins = data?.skins
     }catch(err){
         console.log(err.message)
     }
@@ -38,16 +38,22 @@ async function getShop(){
     try{
         const res = await fetch("https://skillrush-3adaf-default-rtdb.firebaseio.com/shop.json")
         const data = await res.json()
-        renderSkin(data)
+        const filterArray = filterAvatar(data)
+        renderSkin(filterArray)
     }catch(err){
         console.log(err.message)
     }
 }
+function filterAvatar(data) {
+    return data.filter(shopSkin =>
+        !userSkins.some(userSkin => userSkin.img === shopSkin.img)
+    )
+}
 function renderSkin(data){
     shopList.innerHTML = ""
-    data.forEach((el, index) => {
+    data.forEach((el) => {
         shopList.innerHTML += `
-          <li data-id="${index}" class="shop_item">
+          <li data-url="${el.img}" class="shop_item">
             <img width="90" src=${el.img} alt="" class="shop_img">
             <h3 class="shop_subtitle">${el.point} scores</h3>
           </li>`
@@ -74,20 +80,19 @@ searchForm.addEventListener("submit", async(evt) => {
 })
 shopList.addEventListener("click", async(evt) => {
     const itemData = evt.target.closest(".shop_item")
-    const itemIndex = itemData.dataset.id
-    setTimeout(() => {
-        buySection.style.display = "block"
-    }, 500)
+    const itemUrl = itemData.dataset.url
     
     try{
         const res = await fetch("https://skillrush-3adaf-default-rtdb.firebaseio.com/shop.json")
         const data = await res.json()
-        const findAvatar = data[itemIndex]
+        const findAvatar = data?.find((el) => el.img === itemUrl)
         avatarScore = findAvatar.point
         avatarImg = findAvatar.img
         buyImg.setAttribute("src", `${findAvatar.img}`)
     }catch(err){
         console.log(err.message)
+    }finally{
+        buySection.style.display = "block"
     }
 })
 buyNoBtn.addEventListener("click", (evt) => {
@@ -105,7 +110,7 @@ buyYesBtn.addEventListener("click", async(evt) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: {
+            body:JSON.stringify({
                 score: userScore - avatarScore,
                 skins: [
                   ...userSkins,
@@ -113,11 +118,14 @@ buyYesBtn.addEventListener("click", async(evt) => {
                     img: avatarImg
                   }
                 ]
-            }
+            })
           })
           const data = await res.json()
         }catch(err){
             console.log(err.message)
+        }finally{
+            buySection.style.display = "none"
+            window.location.reload()
         }
     }else{
         alert(`You dont have ${avatarScore} point`)

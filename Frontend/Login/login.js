@@ -79,7 +79,14 @@ async function userRegistor(email, password){
             avatar: "../../photo/icon/userIcon.png",
             score: 50,
             ball: 0,
-            skins: []
+            skins: [
+              {
+                img: "../../photo/icon/logo.png"
+              },
+              {
+                img: "../../photo/icon/userIcon.png"
+              }
+            ]
         })
     })
     const dataProfile = await resProfile.json()
