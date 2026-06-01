@@ -217,3 +217,72 @@
 .shop_img{
     filter: grayscale(1);
 }
+
+.buy{
+    background: #38386b64;
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    display: none;
+}
+.buy__wraper{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.buy__content{
+    background: #231942;
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+.buy_title{
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #dfdffd;
+}
+.buy_img{
+    width: 180px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+.buy__btn{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+.buy_btn-yes,
+.buy_btn-no{
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: .3s;
+}
+.buy_btn-yes{
+    background: #4CAF50;
+    color: white;
+}
+.buy_btn-yes:hover{
+    background: #43a047;
+}
+.buy_btn-no{
+    background: #f44336;
+    color: white;
+}
+.buy_btn-no:hover{
+    background: #e53935;
+}
