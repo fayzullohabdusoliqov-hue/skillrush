@@ -35,9 +35,8 @@ async function getShop(){
         console.log(err.message)
     }
 }
-getShop()
-
 function renderSkin(data){
+    shopList.innerHTML = ""
     data.forEach(el => {
         shopList.innerHTML += `
           <li data-url="${el.img}" class="shop_item">
@@ -46,17 +45,23 @@ function renderSkin(data){
           </li>`
     })
 }
+getShop()
 
 function searchAvatar(data){
-    const searchAvatar = data.filter((el) => el.point == searchInput.value)
-    renderSkin(searchAvatar)
+    if(searchInput.value == ""){
+        return data
+    }else{
+        const searchAvatar = data.filter((el) => el.point == searchInput.value)
+        return searchAvatar
+    }
 }
 searchForm.addEventListener("submit", async(evt) => {
     evt.preventDefault()
     try{
         const res = await fetch("https://skillrush-3adaf-default-rtdb.firebaseio.com/shop.json")
         const data = await res.json()
-        searchAvatar(data)
+        const searchArray = searchAvatar(data)
+        renderSkin(searchArray)
     }catch(err){
         console.log(err.message)
     }
