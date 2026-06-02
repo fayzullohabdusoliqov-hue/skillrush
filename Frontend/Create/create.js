@@ -16,8 +16,6 @@ async function getProfile(){
         headerAvatar.src = `${data?.avatar}`
         headerScore.textContent = `${data?.score}`
         headerBall.textContent = `${data?.ball}`
-        const filterNull = data?.skins?.filter((el) => el != null)
-        renderSkins(filterNull)
     }catch(err){
         console.log(err.message)
     }
