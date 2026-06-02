@@ -38,16 +38,10 @@ async function getShop(){
     try{
         const res = await fetch("https://skillrush-3adaf-default-rtdb.firebaseio.com/shop.json")
         const data = await res.json()
-        const filterArray = filterAvatar(data)
-        renderSkin(filterArray)
+        renderSkin(data)
     }catch(err){
         console.log(err.message)
     }
-}
-function filterAvatar(data) {
-    return data.filter(shopSkin =>
-        !userSkins.some(userSkin => userSkin.img === shopSkin.img)
-    )
 }
 function renderSkin(data){
     shopList.innerHTML = ""

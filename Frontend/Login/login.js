@@ -81,9 +81,6 @@ async function userRegistor(email, password){
             ball: 0,
             skins: [
               {
-                img: "../../photo/icon/logo.png"
-              },
-              {
                 img: "../../photo/icon/userIcon.png"
               }
             ]
