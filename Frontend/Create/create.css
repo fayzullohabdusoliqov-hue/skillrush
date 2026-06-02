@@ -56,7 +56,7 @@
     flex-direction: column;
     gap: 2px;
 }
-.navbar_item:nth-child(1) > .navbar__bottom{
+.navbar_item:nth-child(5) > .navbar__bottom{
     animation: navbarBottom ease-out 0.3s;
     background: #38386b;
     width: 45px;
