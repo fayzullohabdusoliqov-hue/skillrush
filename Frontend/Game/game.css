@@ -1,0 +1,135 @@
+.site__header{
+    position: sticky;
+    top: 0;
+    z-index: 10;
+
+    background: #231942;
+    border: 3px solid #2a2a48;
+    color: #dfdffd;
+    width: 100%;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+}
+.header__wraper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.header__logo{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+}
+.header_logo{
+    margin-right: -15px;
+    margin-left: -25px ;
+}
+.header__logo > .header__content{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1px;
+}
+.header_title{
+    font-size: 24px;
+    font-weight: 900;
+}
+.header_small{
+    font-size: 10px;
+    font-weight: 100;
+}
+.navbar__list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+}
+.navbar_item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2px;
+}
+.navbar_item:nth-child(1) > .navbar__bottom{
+    animation: navbarBottom ease-out 0.3s;
+    background: #38386b;
+    width: 45px;
+    height: 3px;
+}
+.navbar__bottom{
+    background: transparent;
+    width: 45px;
+    height: 3px;
+    transition: linear 0.3s;
+}
+.navbar_item:hover .navbar__bottom{
+    animation: navbarBottom ease-out 0.3s;
+    background: #38386b;
+    width: 45px;
+    height: 3px;
+}
+@keyframes navbarBottom{
+    0%{
+        transform: translateX(-45px);
+    }
+    100%{
+        transform: translateX(0px);
+    }
+}
+.navbar_link{
+    color: #dfdffd;
+}
+.header__left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
+}
+.header__profile{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction:row-reverse ;
+    gap: 10px;
+    cursor: pointer;
+    transition: ease-in-out 0.3s;
+}
+.header__profile > .header__content{
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+}
+.header_name{
+    font-size: 20px;
+    font-weight: 800;
+}
+.header_email{
+    font-size: 8px;
+    font-weight: 100;
+}
+.header__ball, .header__score{
+    background: #2f2f61;
+    border: #5f5f92 2px solid;
+    width: 80px;
+    height: 50px;
+    border-radius: 8px;
+    padding: 7px;
+    transition:ease-out 0.3s;
+    cursor: pointer;
+}
+.header__score > .header_small , .header__ball > .header_small{
+    display: block;
+    padding-bottom: 7px;
+    font-size: 8px;
+}
+.header__logo:hover, .header__profile:hover,.header__ball:hover,.header__score:hover{
+    transform: scale(110%);
+}
