@@ -69,7 +69,7 @@ profileForm.addEventListener("submit", (evt) => {
 
 function renderSkins(skins){
     for(let i = 0; i < skins.length; i++){
-        skinsList.innerHTML += `<li data-url="${skins[i].img}" class="skins_item"><img width="90" src=${skins[i].img} alt="" class="skins_img"></li>`
+        skinsList.innerHTML += `<li data-url="${skins[i].img}" class="skins_item"><img width="80" src=${skins[i].img} alt="" class="skins_img"></li>`
     }
 }
 skinsList.addEventListener("click", async(evt) => {

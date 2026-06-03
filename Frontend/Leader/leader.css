@@ -107,6 +107,9 @@
     flex-direction: column;
     gap: 4px;
 }
+.header_avatar{
+    border-radius: 50%;
+}
 .header_name{
     font-size: 20px;
     font-weight: 800;
@@ -170,11 +173,17 @@
     font-size: 20px;
     margin-bottom: 10px;
 }
+#top-one,
+#top-two,
+#top-three{
+    position: relative;
+    transform-origin: bottom;
+}
 #top-one{
     background: #22c55e;
     height: 390px;
     order: 3;
-    animation: topOne 2s ease-out;
+    animation: grow 1.5s ease-out forwards;
 }
 #top-one::before{
     content: "🥇";
@@ -188,7 +197,7 @@
     background: #f97316;
     height: 340px;
     order: 2;
-    animation: topTwo 2.5s ease-out;
+    animation: grow 2s ease-out forwards;
 }
 #top-two::before{
     content: "🥈";
@@ -202,7 +211,7 @@
     background: #ef4444;
     height: 300px;
     order: 1;
-    animation: topThree 3s ease-out;
+    animation: grow 4s ease-out forwards;
 }
 #top-three::before{
     content: "🥉";
@@ -212,28 +221,12 @@
     left: 50%;
     transform: translateX(-50%);
 }
-@keyframes topOne{
+@keyframes grow{
     0%{
-        height: 0;
+        transform: scaleY(0);
     }
     100%{
-        height: 390px;
-    }
-}
-@keyframes topTwo{
-    0%{
-        height: 0;
-    }
-    100%{
-        height: 340px;
-    }
-}
-@keyframes topThree{
-    0%{
-        height: 0;
-    }
-    100%{
-        height: 300px;
+        transform: scaleY(1);
     }
 }
 .leader__list{
