@@ -50,6 +50,39 @@
             </div>
         </div>
     </header>
+    <main class="site__main">
+        <section class="search">
+            <div class="conteyner search__wraper">
+                <h2 class="search_title">Search game</h2>
+                <form class="search__form">
+                    <select id="category" class="search_form">
+                        <option disabled selected>Category</option>
+                        <option value="sat">SAT</option>
+                        <option value="ielts">IELTS</option>
+                        <option value="it">IT</option>
+                    </select>
+                    <select id="level" class="search_form">
+                        <option disabled selected>Level</option>
+                        <option value="easy">EASY</option>
+                        <option value="medium">MEDIUM</option>
+                        <option value="hard">HARD</option>
+                    </select>
+                    <select id="language" class="search_form">
+                        <option disabled selected>Language</option>
+                        <option value="eng">ENG</option>
+                        <option value="rus">RUS</option>
+                        <option value="uzb">UZB</option>
+                    </select>
+                    <button class="search_btn">Search</button>
+                </form>
+            </div>
+        </section>
+        <section class="game">
+            <div class="conteyner game__wraper">
+
+            </div>
+        </section>
+    </main>
 
     <script type="module" src="../firebase.js"></script>
     <script src="./game.js"></script>

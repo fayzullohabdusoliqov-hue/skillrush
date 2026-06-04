@@ -136,3 +136,40 @@
 .header__logo:hover, .header__profile:hover,.header__ball:hover,.header__score:hover{
     transform: scale(110%);
 }
+
+.search{
+    padding-top: 40px;
+}
+.search_title{
+    font-size: xx-large;
+    font-weight: 900;
+    padding-bottom: 15px;
+}
+.search__form{
+    
+}
+
+.search_input:focus{
+    box-shadow: #38386b 2px 2px 3px 0px;
+    transform: scale(101%);
+}
+.search_input::placeholder{
+    color: #dfdffdcb;
+}
+.search_btn{
+    background: transparent;
+    width: 200px;
+    height: 45px;
+    padding: 0 10px;
+    border-radius: 6px;
+    outline: none;
+    border: #dfdffd 1px solid;
+
+    color: #dfdffd;
+    font-size: 14px;
+    transition: ease-in 0.3s;
+}
+.search_btn:hover{
+    box-shadow: #38386b 1px 1px 2px 0px;
+    transform: scale(103%);
+}
