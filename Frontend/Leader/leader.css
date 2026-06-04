@@ -166,7 +166,6 @@
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid white;
     margin-bottom: 10px;
 }
 .leader_title-top{
@@ -269,7 +268,6 @@
     height: 55px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #e5e7eb;
 }
 .leader_subtitle{
     font-size: 18px;
