@@ -8,6 +8,7 @@ const token = localStorage.getItem("token")
 
 const categorySelect = document.querySelector("#category")
 const levelSelect = document.querySelector("#level")
+const typeSelect = document.querySelector("#type")
 const gameWraper = document.querySelector(".game__wraper")
 const searchForm = document.querySelector(".search__form")
 
@@ -56,12 +57,7 @@ searchForm.addEventListener("submit", async(evt) => {
         const res = await fetch("https://skillrush-3adaf-default-rtdb.firebaseio.com/game.json")
         const data = await res.json()
         const addFirebaseKey = await Object.entries(data).map(([key, value]) => ({...value, firebaseKey: key}))
-        const searchArray = await Object.values(addFirebaseKey).filter((el) => categorySelect.value === "dontHaveCategory" || levelSelect.value === "dontHaveLevel"? categorySelect.value.toUpperCase() == el.category || levelSelect.value == el.level :  categorySelect.value.toUpperCase() == el.category && levelSelect.value == el.level)
-        
-        if(categorySelect.value === "dontHaveCategory" || levelSelect.value === "dontHaveLevel"){
-            const dataArray = await Object.entries(data).map(([key, value]) => ({...value, firebaseKey: key}))
-            renderGame(dataArray)
-        }
+        const searchArray = await Object.values(addFirebaseKey).filter((el) => categorySelect.value === "dontHaveCategory" || levelSelect.value === "dontHaveLevel" || typeSelect.value === "dontHaveType"? categorySelect.value.toUpperCase() == el.category || levelSelect.value == el.level ||  typeSelect.value == el.type :  categorySelect.value.toUpperCase() == el.category && levelSelect.value == el.level && typeSelect.value == el.type)
 
         renderGame(searchArray) 
     }catch(err){

@@ -10,6 +10,8 @@ const GAME_ID = new URLSearchParams(window.location.search).get("gameId")
 const testWraper = document.querySelector(".test__wraper")
 const kahotWraper = document.querySelector(".kahot__wraper")
 const timeSpan = document.querySelector("#time")
+const input = document.createElement("input")
+const submitBtn = document.querySelector(".game_btn")
 let time = 60
 
 async function getProfile(){
@@ -26,22 +28,36 @@ async function getProfile(){
         console.log(err.message)
     }
 }
-
 async function getGame(){
     try{
         const res = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/game/${GAME_ID}.json`)
         const data = await res.json()
         
+        switch(data.level){
+            case "hard":
+                time = 180
+                timeSpan.textContent = `${time} secund`
+                break
+            case "medium":
+                time = 120
+                timeSpan.textContent = `${time} secund`
+                break
+            case "easy":
+                time = 60
+                timeSpan.textContent = `${time} secund`
+                break
+        }
+
         if(data.type === "test"){
             renderTest(data?.questions)
         }else{
             renderKahot(data?.questions)
         }
+
     }catch(err){
         console.log(err.message)
     }
 }
-
 function renderKahot(data){
     kahotWraper.innerHTML = ""
 
@@ -50,26 +66,37 @@ function renderKahot(data){
     }
 }
 function renderTest(data){
-    testWraper.innerHTML = ""
-
     for(let i = 0; i < data.length; i++){
         testWraper.innerHTML += `
-            <div class="test__content">
-             <p class="test_text"><strong class="test_strong">Question ${i + 1}:</strong> ${data[i].question}</p>
-             <input type="text" placeholder="question ${i + 1}"/>
-            </div>`
+          <div class="test__content">
+            <p class="test_text"><strong class="test_strong">Question ${i + 1}:</strong> ${data[i].question}</p>
+          </div>`
+          input.type = "text"
+          input.placeholder = `question ${i + 1}`
+          input.classList.add("test_input")
+          testWraper.appendChild(input)
     }
+
 }
 
-// const timer = setInterval(() => {
-//     time--
-//     timeSpan.textContent = `${time} secund`
+const timer = setInterval(() => {
+    time--
+    timeSpan.textContent = `${time} secund`
 
-//     if(time === 0){
-//         clearInterval(timer)
-//         alert("your time finally")
-//     }
-// },1000)
+    if(time === 0){
+        clearInterval(timer)
+        getValus()
+    }
+},1000)
+function getValus(){
+    const inputs = document.querySelectorAll(".test_input")
+    const inputsValue = [...inputs].map((el) => el.value)
+    return inputs
+}
+submitBtn.addEventListener("click", (evt) => {
+    evt.preventDefault()
+    getValus()
+})
 
 getGame()
 getProfile()
