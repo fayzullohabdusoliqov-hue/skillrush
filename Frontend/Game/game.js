@@ -41,8 +41,9 @@ function renderGame(data){
     gameWraper.innerHTML = "" 
 
     data.forEach((el, index) => {
-        gameWraper.innerHTML += `<a href="http://127.0.0.1:5500/Frontend/Game/gameDetail.html?gameId=${el.firebaseKey}"><div key="${index}" class="game__content">
-            <span class="game_span">${el.level}</span>
+        gameWraper.innerHTML += `<a href="http://127.0.0.1:5500/Frontend/GameDetail/gameDetail.html?gameId=${el.firebaseKey}"><div key="${index}" class="game__content">
+            <span class="game_level">${el.level}</span>
+            <span class="game_type">${el.type}</span>
             <h3 class="game_subtitle ${el.category === "IT"? "it": el.category === "IELTS"? "ielts" : "sat" }">${el.category}</h3>
         </div></a>`
     })

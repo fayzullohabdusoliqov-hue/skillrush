@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Rush</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ruda:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../normalize.css">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="./gameDetail.css">
+</head>
+<body>
+
+    <header class="site__header">
+        <div class="conteyner header__wraper">  
+            <div class="header__logo">
+                <img width="110" src="../../photo/icon/logo.png" alt="" class="header_logo">
+                <div class="header__content">
+                    <h3 class="header_title">SKILL RUSH</h3>
+                    <small class="header_small">Everyone have skill</small>
+                </div>
+            </div>
+            <nav class="header__navbar">
+                <ul class="navbar__list">
+                    <li class="navbar_item"><a href="../Home/home.html" class="navbar_link">Home</a><span class="navbar__bottom"></span></li>
+                    <li class="navbar_item"><a href="../Game/game.html" class="navbar_link">Game</a><span class="navbar__bottom"></span></li>
+                    <li class="navbar_item"><a href="../Shop/shop.html" class="navbar_link">Shop</a><span class="navbar__bottom"></span></li>
+                    <li class="navbar_item"><a href="../Leader/leader.html" class="navbar_link">Leader</a><span class="navbar__bottom"></span></li>
+                    <li class="navbar_item"><a href="../Create/create.html" class="navbar_link">Create</a><span class="navbar__bottom"></span></li>
+                </ul>
+            </nav>
+            <div class="header__left">
+                <div class="header__profile">
+                    <img width="56" src="" alt="" class="header_avatar">
+                    <div class="header__content">
+                        <h4 class="header_name"></h4>
+                        <small class="header_email"></small>
+                    </div> 
+                </div>
+                <div class="header__score">
+                    <small class="header_small">Your score:</small>
+                    <h5 class="header_subtitle score"></h5>
+                </div>
+                <div class="header__ball">
+                    <small class="header_small">Your ball:</small>
+                    <h5 class="header_subtitle ball"></h5>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="site__main">
+        <section class="game">
+            <div class="conteyner game__wraper">
+                <div class="timer">
+                  <h4 id="time_title">You have:</h4>
+                  <span id="time">60 secund</span>
+                </div>
+            </div>
+        </section>
+        <section class="test">
+            <div class="conteyner test__wraper">
+               
+            </div>
+        </section>
+        <section class="kahot">
+            <div class="conteyner kahot__wraper">
+
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../firebase.js"></script>
+    <script src="./gameDetail.js"></script>
+</body>
+</html>
