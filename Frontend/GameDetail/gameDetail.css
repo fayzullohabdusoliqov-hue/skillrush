@@ -200,7 +200,7 @@
     left: 20px;
 
     background: transparent;
-    width: 250px;
+    width: 350px;
     height: 45px;
     border-radius: 10px;
     border: 1px solid #dfdffd;
@@ -225,6 +225,7 @@
     position: fixed;
     inset: 0;
     z-index: 1;
+    display: none;
 }
 .give__wraper{
     width: 100%;

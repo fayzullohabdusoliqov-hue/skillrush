@@ -12,6 +12,13 @@ const kahotWraper = document.querySelector(".kahot__wraper")
 const timeSpan = document.querySelector("#time")
 const input = document.createElement("input")
 const submitBtn = document.querySelector(".game_btn")
+const giveSection = document.querySelector(".give")
+const giveBtn = document.querySelector(".close_btn")
+const giveCorects = document.querySelector(".give_yes")
+const giveNotCorects = document.querySelector(".give_no")
+const giveSecund = document.querySelector("#secund")
+const giveBall = document.querySelector("#ball")
+const givePoint = document.querySelector("#point")
 let time = 60
 
 async function getProfile(){
@@ -43,7 +50,7 @@ async function getGame(){
                 timeSpan.textContent = `${time} secund`
                 break
             case "easy":
-                time = 60
+                time = 10
                 timeSpan.textContent = `${time} secund`
                 break
         }
@@ -53,11 +60,13 @@ async function getGame(){
         }else{
             renderKahot(data?.questions)
         }
-
     }catch(err){
         console.log(err.message)
     }
 }
+getGame()
+getProfile()
+
 function renderKahot(data){
     kahotWraper.innerHTML = ""
 
@@ -79,24 +88,85 @@ function renderTest(data){
 
 }
 
-const timer = setInterval(() => {
+const timer = setInterval(async() => {
     time--
     timeSpan.textContent = `${time} secund`
 
     if(time === 0){
         clearInterval(timer)
-        getValus()
+        giveSection.style.display = "block"
+        const values = getValus()
+        let corects = []
+
+        try{
+            const res = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/game/${GAME_ID}.json`)
+            const data = res.json()
+            switch(data?.level){
+                case "hard":
+                    giveSecund.textContent = `180 secund`
+                    break
+                case "medium":
+                    giveSecund.textContent = `120 secund`
+                    break
+                case "easy":
+                    giveSecund.textContent = `60 secund`
+                    break
+            }
+
+            for(let i = 0; i < data?.questions?.length; i++){
+                if(data[i]?.questions?.answer === values[i]){
+                    corects = [...corects, values[i]]
+                }
+            }
+            
+            giveCorects.textContent = `${corects.length} corects`
+            giveNotCorects.textContent = `${data?.questions?.length - corects} not corects`
+            
+        }catch(err){
+            console.log(err.message)
+        }
     }
 },1000)
 function getValus(){
     const inputs = document.querySelectorAll(".test_input")
     const inputsValue = [...inputs].map((el) => el.value)
-    return inputs
+    return inputsValue
 }
-submitBtn.addEventListener("click", (evt) => {
+submitBtn.addEventListener("click", async(evt) => {
     evt.preventDefault()
-    getValus()
-})
+    giveSection.style.display = "block"
+    const values = getValus()
+    let corects = []
+    
+    try{
+        const res = await fetch(`https://skillrush-3adaf-default-rtdb.firebaseio.com/game/${GAME_ID}.json`)
+        const data = await res.json()
+        switch(data?.level){
+                case "hard":
+                    giveSecund.textContent = `180 secund`
+                    break
+                case "medium":
+                    giveSecund.textContent = `120 secund`
+                    break
+                case "easy":
+                    giveSecund.textContent = `60 secund`
+                    break
+            }
 
-getGame()
-getProfile()
+            for(let i = 0; i < data?.questions?.length; i++){
+                if(data[i]?.questions?.answer === values[i]){
+                    corects = [...corects, values[i]]
+                }
+            }
+            
+            giveCorects.textContent = `${corects.length} corects`
+            giveNotCorects.textContent = `${data?.questions?.length - corects} not corects`
+    }catch(err){
+        console.log(err.message)
+    }
+})
+giveBtn.addEventListener("click", (evt) => {
+    evt.preventDefault()
+    giveSection.style.display = "none"
+    window.location.href = "http://127.0.0.1:5500/Frontend/Game/game.html"
+})
